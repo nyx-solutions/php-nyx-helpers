@@ -1,0 +1,38 @@
+{
+  "name": "nox-it/php-nox-helpers",
+  "description": "NOX Helpers",
+  "type": "library",
+  "keywords": [
+    "yii2",
+    "extension",
+    "helpers",
+    "framework",
+    "php"
+  ],
+  "license": "BSD-3-Clause",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Jonatas Sas",
+      "email": "atendimento@jsas.com.br"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "nox\\base\\helpers\\": "helpers/"
+    }
+  },
+  "config": {
+    "process-timeout": 1800
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/nox-it/php-nox-helpers"
+    }
+  ]
+}
