@@ -2,15 +2,12 @@
 
     namespace nox\base\helpers;
 
-    use DateTime;
-    use DateTimeZone;
-
     /**
      * Class StringHelper
      *
      * @package nox\base\helpers
      */
-    class StringHelper
+    class StringHelper extends BaseStringHelper
     {
         const GENDER_MALE       = 'M';
         const GENDER_FEMALE     = 'F';
@@ -638,7 +635,7 @@
          */
         public static function getUniqueCode()
         {
-            $now = new DateTime('now', new DateTimeZone(DateTimeHelper::$tz));
+            $now = new DateTimeHelper('now', new \DateTimeZone(DateTimeHelper::$currentTimeZone));
 
             return (string)sha1(uniqid(rand().rand().$now->format('YmdHis'), true));
         }

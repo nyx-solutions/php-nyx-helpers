@@ -51,7 +51,6 @@ _project
 *.url
 _site
 _admin
-_project
 _info
 _shortcuts
 .permissions.sh
@@ -98,3 +97,4 @@ _shortcuts
 ######################
 /var/cache
 /var/session
+/composer.lock
