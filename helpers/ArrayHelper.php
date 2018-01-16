@@ -7,7 +7,7 @@
      *
      * @package nox\base\helpers
      */
-    class ArrayHelper
+    class ArrayHelper extends BaseArrayHelper
     {
         const SLUG_METHOD_SINGLE = 1;
         const SLUG_METHOD_AS_KEY = 2;

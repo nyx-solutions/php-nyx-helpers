@@ -3,14 +3,12 @@
   "description": "NOX Helpers",
   "type": "library",
   "keywords": [
-    "yii2",
-    "extension",
     "helpers",
     "framework",
     "php"
   ],
   "license": "BSD-3-Clause",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "authors": [
     {
       "name": "Jonatas Sas",
@@ -19,7 +17,9 @@
   ],
   "minimum-stability": "stable",
   "require": {
-    "php": ">=5.4.0"
+    "php": ">=5.6.0",
+    "ezyang/htmlpurifier": "~4.6",
+    "nesbot/carbon": "~1.22"
   },
   "autoload": {
     "psr-4": {
