@@ -3,6 +3,7 @@
     namespace nox\base\helpers;
 
     use Carbon\Carbon;
+    use DateTimeZone;
 
     /**
      * Class DateTimeHelper
@@ -11,10 +12,10 @@
      */
     class DateTimeHelper extends Carbon
     {
-        const TYPE_DATE      = 'date';
-        const TYPE_TIME      = 'time';
-        const TYPE_DATE_TIME = 'datetime';
-        const TYPE_OTHER     = 'other';
+        const TYPE_DATE            = 'date';
+        const TYPE_TIME            = 'time';
+        const TYPE_DATE_TIME       = 'datetime';
+        const TYPE_OTHER           = 'other';
 
         const BASE_DATE_FORMAT     = 'Y-m-d';
         const BASE_DATETIME_FORMAT = 'Y-m-d H:i:s';
@@ -28,13 +29,13 @@
         /**
          * @inheritdoc
          */
-        public function __construct($time = null, $tz = null)
+        public function __construct($time = 'now', DateTimeZone $timezone = null)
         {
-            if (is_null($tz)) {
-                $tz = new \DateTimeZone(static::$currentTimeZone);
+            if (is_null($timezone)) {
+                $timezone = new \DateTimeZone(static::$currentTimeZone);
             }
 
-            parent::__construct($time, $tz);
+            parent::__construct($time, $timezone);
         }
 
         /**
