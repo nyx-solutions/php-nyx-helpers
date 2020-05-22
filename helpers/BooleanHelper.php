@@ -2,6 +2,9 @@
 
     namespace nox\base\helpers;
 
+    use BadMethodCallException;
+    use InvalidArgumentException;
+
     /**
      * Class BooleanHelper
      *
@@ -29,24 +32,17 @@
          *
          * @return  string  the string value
          *
-         * @throws  \BadMethodCallException    if $bool is null
-         * @throws  \InvalidArgumentException  if $bool is not a (bool) value
-         * @throws  \InvalidArgumentException  if $format is not a string
-         * @throws  \InvalidArgumentException  if $format is not a valid format
+         * @throws  BadMethodCallException    if $bool is null
+         * @throws  InvalidArgumentException  if $bool is not a (bool) value
+         * @throws  InvalidArgumentException  if $format is not a string
+         * @throws  InvalidArgumentException  if $format is not a valid format
          */
         public static function booltostr($bool, $format = 'true-false')
         {
-            $string = false;
-
-            // if $bool and format are not null
             if ($bool !== null && $format !== null) {
-                // if $bool is actually a bool
                 if (is_bool($bool)) {
-                    // if $format is a string
                     if (is_string($format)) {
-                        // switch on the lower-case $format
                         switch (strtolower($format)) {
-
                             case 'oo':
                             case 'o/o':
                             case 'o-o':
@@ -75,20 +71,20 @@
                                 break;
 
                             default:
-                                throw new \InvalidArgumentException(
+                                throw new InvalidArgumentException(
                                     __METHOD__."() expects parameter two, format, to be one of the following: ".
                                     "'t[/-]f', 'true[/-]false', 'y[/-]s', 'yes[/-]no', 'o[/-]o', or ".
                                     "'on[/-]off', '$format' given"
                                 );
                         }
                     } else {
-                        throw new \InvalidArgumentException(__METHOD__."() expects parameter two, format, to be a string");
+                        throw new InvalidArgumentException(__METHOD__."() expects parameter two, format, to be a string");
                     }
                 } else {
-                    throw new \InvalidArgumentException(__METHOD__."() expects parameter one, bool, to be a bool value given");
+                    throw new InvalidArgumentException(__METHOD__."() expects parameter one, bool, to be a bool value given");
                 }
             } else {
-                throw new \BadMethodCallException(__METHOD__."() expects one or two parameters, a bool value and a string format");
+                throw new BadMethodCallException(__METHOD__."() expects one or two parameters, a bool value and a string format");
             }
 
             return $string;

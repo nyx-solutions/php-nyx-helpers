@@ -3,7 +3,10 @@
     namespace nox\base\helpers;
 
     use Carbon\Carbon;
+    use DateInterval;
+    use DateTime;
     use DateTimeZone;
+    use Exception;
 
     /**
      * Class DateTimeHelper
@@ -24,7 +27,7 @@
         /**
          * @var string
          */
-        public static $currentTimeZone = 'America/Sao_Paulo';
+        public static string $currentTimeZone = 'America/Sao_Paulo';
 
         /**
          * @inheritdoc
@@ -32,22 +35,10 @@
         public function __construct($time = 'now', DateTimeZone $timezone = null)
         {
             if (is_null($timezone)) {
-                $timezone = new \DateTimeZone(static::$currentTimeZone);
+                $timezone = new DateTimeZone(static::$currentTimeZone);
             }
 
             parent::__construct($time, $timezone);
-        }
-
-        /**
-         * @inheritdoc
-         */
-        public static function now($tz = null)
-        {
-            if (is_null($tz)) {
-                $tz = new \DateTimeZone(static::$currentTimeZone);
-            }
-
-            return parent::now($tz);
         }
 
         /**
@@ -90,7 +81,7 @@
 
             $date = static::createFromFormat($sourceFormat, $date);
 
-            if ($date instanceof \DateTime) {
+            if ($date instanceof DateTime) {
                 $date = $date->format($targetFormat);
             } else {
                 $date = '';
@@ -105,17 +96,19 @@
          * @param string $type
          *
          * @return static
+         *
+         * @throws Exception
          */
         public static function asDate($date, $sourceFormat = 'd/m/Y', $type = 'date')
         {
             $date = (string)$date;
 
             if (!in_array($type, [self::TYPE_DATE, self::TYPE_TIME, self::TYPE_DATE_TIME, self::TYPE_OTHER])) {
-                return new static('now', new \DateTimeZone(static::$currentTimeZone));
+                return new static('now', new DateTimeZone(static::$currentTimeZone));
             }
 
             if (empty($date)) {
-                return new static('now', new \DateTimeZone(static::$currentTimeZone));
+                return new static('now', new DateTimeZone(static::$currentTimeZone));
             }
 
             if ($type === self::TYPE_DATE_TIME) {
@@ -136,10 +129,10 @@
 
             unset($fmt);
 
-            $date = static::createFromFormat($sourceFormat, $date, new \DateTimeZone(static::$currentTimeZone));
+            $date = static::createFromFormat($sourceFormat, $date, new DateTimeZone(static::$currentTimeZone));
 
-            if (!$date instanceof \DateTime) {
-                $date = new static('now', new \DateTimeZone(static::$currentTimeZone));
+            if (!$date instanceof DateTime) {
+                $date = new static('now', new DateTimeZone(static::$currentTimeZone));
             }
 
             return $date;
@@ -158,9 +151,9 @@
 
             if (!empty($date) && !is_null($date)) {
                 if (preg_match('/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/', $date)) {
-                    $date = static::createFromFormat('d/m/Y', $date, new \DateTimeZone(static::$currentTimeZone));
+                    $date = static::createFromFormat('d/m/Y', $date, new DateTimeZone(static::$currentTimeZone));
 
-                    if ($date instanceof \DateTime) {
+                    if ($date instanceof DateTime) {
                         return $date->format($returnFormat);
                     } else {
                         return false;
@@ -178,18 +171,20 @@
          * @param string $format
          *
          * @return integer
+         *
+         * @throws Exception
          */
         public static function getAge($birthdate, $format = 'Y-m-d')
         {
             if (!empty((string)$birthdate)) {
-                $date     = static::createFromFormat($format, $birthdate, new \DateTimeZone(static::$currentTimeZone));
+                $date     = static::createFromFormat($format, $birthdate, new DateTimeZone(static::$currentTimeZone));
 
-                $now      = new static('now', new \DateTimeZone(static::$currentTimeZone));
+                $now      = new static('now', new DateTimeZone(static::$currentTimeZone));
 
-                if ($now instanceof \DateTime) {
+                if ($now instanceof DateTime) {
                     $interval = $now->diff($date);
 
-                    if ($interval instanceof \DateInterval) {
+                    if ($interval instanceof DateInterval) {
                         return $interval->y;
                     }
                 }

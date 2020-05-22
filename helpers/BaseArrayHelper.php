@@ -2,7 +2,9 @@
 
     namespace nox\base\helpers;
 
+    use Closure;
     use nox\base\helpers\exceptions\InvalidParamException;
+    use Traversable;
 
     /**
      * Class BaseArrayHelper
@@ -163,19 +165,19 @@
          * $value = \yii\helpers\ArrayHelper::getValue($versions, ['1.0', 'date']);
          * ```
          *
-         * @param array|object          $array   array or object to extract value from
-         * @param string|\Closure|array $key     key name of the array element, an array of keys or property name of the object,
+         * @param array|object         $array    array or object to extract value from
+         * @param string|Closure|array $key      key name of the array element, an array of keys or property name of the object,
          *                                       or an anonymous function returning the value. The anonymous function signature should be:
          *                                       `function($array, $defaultValue)`.
          *                                       The possibility to pass an array of keys is available since version 2.0.4.
-         * @param mixed                 $default the default value to be returned if the specified array key does not exist. Not used when
+         * @param mixed                $default  the default value to be returned if the specified array key does not exist. Not used when
          *                                       getting value from an object.
          *
          * @return mixed the value of the element if found, default value otherwise
          */
         public static function getValue($array, $key, $default = null)
         {
-            if ($key instanceof \Closure) {
+            if ($key instanceof Closure) {
                 return $key($array, $default);
             }
 
@@ -443,9 +445,9 @@
          * ]
          * ```
          *
-         * @param array                           $array  the array that needs to be indexed or grouped
-         * @param string|\Closure|null            $key    the column name or anonymous function which result will be used to index the array
-         * @param string|string[]|\Closure[]|null $groups the array of keys, that will be used to group the input array
+         * @param array                          $array   the array that needs to be indexed or grouped
+         * @param string|Closure|null            $key     the column name or anonymous function which result will be used to index the array
+         * @param string|string[]|Closure[]|null $groups  the array of keys, that will be used to group the input array
          *                                                by one or more keys. If the $key attribute or its value for the particular element is null and $groups is not
          *                                                defined, the array element will be discarded. Otherwise, if $groups is specified, array element will be added
          *                                                to the result array without any key. This parameter is available since version 2.0.8.
@@ -507,9 +509,9 @@
          * });
          * ```
          *
-         * @param array           $array
-         * @param string|\Closure $name
-         * @param bool            $keepKeys whether to maintain the array keys. If false, the resulting array
+         * @param array          $array
+         * @param string|Closure $name
+         * @param bool           $keepKeys whether to maintain the array keys. If false, the resulting array
          *                                  will be re-indexed with integers.
          *
          * @return array the list of column values
@@ -565,10 +567,10 @@
          * // ]
          * ```
          *
-         * @param array           $array
-         * @param string|\Closure $from
-         * @param string|\Closure $to
-         * @param string|\Closure $group
+         * @param array          $array
+         * @param string|Closure $from
+         * @param string|Closure $to
+         * @param string|Closure $group
          *
          * @return array
          */
@@ -619,14 +621,14 @@
         /**
          * Sorts an array of objects or arrays (with the same structure) by one or several keys.
          *
-         * @param array                 $array     the array to be sorted. The array will be modified after calling this method.
-         * @param string|\Closure|array $key       the key(s) to be sorted by. This refers to a key name of the sub-array
+         * @param array                $array      the array to be sorted. The array will be modified after calling this method.
+         * @param string|Closure|array $key        the key(s) to be sorted by. This refers to a key name of the sub-array
          *                                         elements, a property name of the objects, or an anonymous function returning the values for comparison
          *                                         purpose. The anonymous function signature should be: `function($item)`.
          *                                         To sort by multiple keys, provide an array of keys here.
-         * @param int|array             $direction the sorting direction. It can be either `SORT_ASC` or `SORT_DESC`.
+         * @param int|array            $direction  the sorting direction. It can be either `SORT_ASC` or `SORT_DESC`.
          *                                         When sorting by multiple keys with different sorting directions, use an array of sorting directions.
-         * @param int|array             $sortFlag  the PHP sort flag. Valid values include
+         * @param int|array            $sortFlag   the PHP sort flag. Valid values include
          *                                         `SORT_REGULAR`, `SORT_NUMERIC`, `SORT_STRING`, `SORT_LOCALE_STRING`, `SORT_NATURAL` and `SORT_FLAG_CASE`.
          *                                         Please refer to [PHP manual](http://php.net/manual/en/function.sort.php)
          *                                         for more details. When sorting by multiple keys with different sort flags, use an array of sort flags.
@@ -820,9 +822,9 @@
          * This method does the same as the PHP function [in_array()](http://php.net/manual/en/function.in-array.php)
          * but additionally works for objects that implement the [[\Traversable]] interface.
          *
-         * @param mixed              $needle   The value to look for.
-         * @param array|\Traversable $haystack The set of values to search.
-         * @param bool               $strict   Whether to enable strict (`===`) comparison.
+         * @param mixed             $needle   The value to look for.
+         * @param array|Traversable $haystack The set of values to search.
+         * @param bool              $strict   Whether to enable strict (`===`) comparison.
          *
          * @return bool `true` if `$needle` was found in `$haystack`, `false` otherwise.
          * @throws InvalidParamException if `$haystack` is neither traversable nor an array.
@@ -831,7 +833,7 @@
          */
         public static function isIn($needle, $haystack, $strict = false)
         {
-            if ($haystack instanceof \Traversable) {
+            if ($haystack instanceof Traversable) {
                 foreach ($haystack as $value) {
                     if ($needle == $value && (!$strict || $needle === $value)) {
                         return true;
@@ -860,7 +862,7 @@
          */
         public static function isTraversable($var)
         {
-            return is_array($var) || $var instanceof \Traversable;
+            return is_array($var) || $var instanceof Traversable;
         }
 
         /**
@@ -869,17 +871,17 @@
          * This method will return `true`, if all elements of `$needles` are contained in
          * `$haystack`. If at least one element is missing, `false` will be returned.
          *
-         * @param array|\Traversable $needles  The values that must **all** be in `$haystack`.
-         * @param array|\Traversable $haystack The set of value to search.
-         * @param bool               $strict   Whether to enable strict (`===`) comparison.
+         * @param array|Traversable $needles  The values that must **all** be in `$haystack`.
+         * @param array|Traversable $haystack The set of value to search.
+         * @param bool              $strict   Whether to enable strict (`===`) comparison.
          *
-         * @throws InvalidParamException if `$haystack` or `$needles` is neither traversable nor an array.
          * @return bool `true` if `$needles` is a subset of `$haystack`, `false` otherwise.
+         * @throws InvalidParamException if `$haystack` or `$needles` is neither traversable nor an array.
          * @since 2.0.7
          */
         public static function isSubset($needles, $haystack, $strict = false)
         {
-            if (is_array($needles) || $needles instanceof \Traversable) {
+            if (is_array($needles) || $needles instanceof Traversable) {
                 foreach ($needles as $needle) {
                     if (!static::isIn($needle, $haystack, $strict)) {
                         return false;
@@ -972,7 +974,7 @@
             }
 
             foreach ($forbiddenVars as $var) {
-                list($globalKey, $localKey) = $var;
+                [$globalKey, $localKey] = $var;
                 if (array_key_exists($globalKey, $result)) {
                     unset($result[$globalKey][$localKey]);
                 }

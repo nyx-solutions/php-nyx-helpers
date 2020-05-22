@@ -16,7 +16,7 @@
         /**
          * @var array
          */
-        protected static $win1252ToUtf8 = [
+        protected static array $win1252ToUtf8 = [
             128 => "\xe2\x82\xac",
             130 => "\xe2\x80\x9a",
             131 => "\xc6\x92",
@@ -49,7 +49,7 @@
         /**
          * @var array
          */
-        protected static $brokenUtf8ToUtf8 = [
+        protected static array $brokenUtf8ToUtf8 = [
             "\xc2\x80" => "\xe2\x82\xac",
             "\xc2\x82" => "\xe2\x80\x9a",
             "\xc2\x83" => "\xc6\x92",
@@ -82,7 +82,7 @@
         /**
          * @var array
          */
-        protected static $utf8ToWin1252 = [
+        protected static array $utf8ToWin1252 = [
             "\xe2\x82\xac" => "\x80",
             "\xe2\x80\x9a" => "\x82",
             "\xc6\x92"     => "\x83",
@@ -154,11 +154,11 @@
 
             $buf = '';
             for ($i = 0; $i < $max; $i++) {
-                $c1 = $text{$i};
+                $c1 = $text[$i];
                 if ($c1 >= "\xc0") { //Should be converted to UTF8, if it's not UTF8 already
-                    $c2 = $i + 1 >= $max ? "\x00" : $text{$i + 1};
-                    $c3 = $i + 2 >= $max ? "\x00" : $text{$i + 2};
-                    $c4 = $i + 3 >= $max ? "\x00" : $text{$i + 3};
+                    $c2 = $i + 1 >= $max ? "\x00" : $text[$i + 1];
+                    $c3 = $i + 2 >= $max ? "\x00" : $text[$i + 2];
+                    $c4 = $i + 3 >= $max ? "\x00" : $text[$i + 3];
                     if ($c1 >= "\xc0" & $c1 <= "\xdf") { //looks like 2 bytes UTF8
                         if ($c2 >= "\x80" && $c2 <= "\xbf") { //yeah, almost sure it's UTF8 already
                             $buf .= $c1.$c2;

@@ -84,7 +84,7 @@
          * @param int   $type
          * @param bool  $raiseError
          *
-         * @return void
+         * @return mixed|null
          *
          * @throws InvalidVariableTypeException
          *
@@ -92,7 +92,7 @@
          */
         public static function forceType($variable, $type = self::TYPE_STRING, $raiseError = false)
         {
-            static::force($variable, $type, $raiseError);
+            return static::force($variable, $type, $raiseError);
         }
 
         /**
@@ -100,7 +100,7 @@
          * @param int   $type
          * @param bool  $raiseError
          *
-         * @return void
+         * @return mixed|null
          *
          * @throws InvalidVariableTypeException
          */
@@ -124,7 +124,7 @@
                 self::TYPE_STRING
             ])
             ) {
-                $variable = (unset)$variable;
+                $variable = null;
             }
 
             switch ($type) {
@@ -158,7 +158,7 @@
                             throw new InvalidVariableTypeException('Callable');
                         }
                     } else {
-                        $variable = (unset)$variable;
+                        $variable = null;
                     }
 
                     break;
@@ -188,18 +188,7 @@
                     break;
                 }
 
-                case self::TYPE_INT: {
-                    if ($raiseError) {
-                        if (!is_integer($variable)) {
-                            throw new InvalidVariableTypeException('Integer');
-                        }
-                    } else {
-                        $variable = (int)$variable;
-                    }
-
-                    break;
-                }
-
+                case self::TYPE_INT:
                 case self::TYPE_INTEGER: {
                     if ($raiseError) {
                         if (!is_integer($variable)) {
@@ -230,7 +219,7 @@
                             throw new InvalidVariableTypeException('Null');
                         }
                     } else {
-                        $variable = (unset)$variable;
+                        $variable = null;
                     }
 
                     break;
@@ -262,11 +251,11 @@
 
                 case self::TYPE_REAL: {
                     if ($raiseError) {
-                        if (!is_real($variable)) {
+                        if (!is_float($variable)) {
                             throw new InvalidVariableTypeException('Real');
                         }
                     } else {
-                        $variable = (real)$variable;
+                        $variable = (float)$variable;
                     }
 
                     break;
@@ -278,7 +267,7 @@
                             throw new InvalidVariableTypeException('Resource');
                         }
                     } else {
-                        $variable = (unset)$variable;
+                        $variable = null;
                     }
 
                     break;
@@ -309,9 +298,11 @@
                 }
 
                 default: {
-                    $variable = (unset)$variable;
+                    $variable = null;
                 }
             }
+
+            return $variable;
         }
 
         /**
@@ -370,7 +361,8 @@
                     return is_double($variable);
                 }
 
-                case self::TYPE_FLOAT: {
+                case self::TYPE_FLOAT:
+                case self::TYPE_REAL: {
                     return is_float($variable);
                 }
 
@@ -396,10 +388,6 @@
 
                 case self::TYPE_OBJECT: {
                     return is_object($variable);
-                }
-
-                case self::TYPE_REAL: {
-                    return is_real($variable);
                 }
 
                 case self::TYPE_RESOURCE: {
