@@ -48,4 +48,14 @@
         {
             return StringHelper::toMoney($amount, $withPrefix);
         }
+
+        /**
+         * @param float $amount
+         *
+         * @return string
+         */
+        public static function toPercentText($amount)
+        {
+            return static::toMoney($amount, false).'%';
+        }
     }

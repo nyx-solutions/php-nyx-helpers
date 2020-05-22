@@ -19,9 +19,14 @@
         public static function encrypt($string)
         {
             $key = pack('H*', self::SECRET);
-            $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND);
 
-            return mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, $string, MCRYPT_MODE_CBC, $iv);
+            $encryption_key = base64_decode($key);
+
+            $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+
+            $encrypted = openssl_encrypt($string, 'aes-256-cbc', $encryption_key, 0, $iv);
+
+            return base64_encode($encrypted . '::' . $iv);
         }
 
         /**
@@ -32,8 +37,11 @@
         public static function decrypt($string)
         {
             $key = pack('H*', self::SECRET);
-            $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND);
 
-            return mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $string, MCRYPT_MODE_CBC, $iv);
+            $encryption_key = base64_decode($key);
+
+            list($encrypted_data, $iv) = explode('::', base64_decode($string), 2);
+
+            return openssl_decrypt($encrypted_data, 'aes-256-cbc', $encryption_key, 0, $iv);
         }
     }

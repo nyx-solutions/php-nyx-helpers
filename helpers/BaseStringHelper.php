@@ -2,6 +2,16 @@
 
     namespace nox\base\helpers;
 
+    use Exception;
+    use HTMLPurifier_Config;
+    use HTMLPurifier_Context;
+    use HTMLPurifier_Generator;
+    use HTMLPurifier_Lexer;
+    use HTMLPurifier_Token_Empty;
+    use HTMLPurifier_Token_End;
+    use HTMLPurifier_Token_Start;
+    use HTMLPurifier_Token_Text;
+
     /**
      * Class BaseStringHelper
      *
@@ -98,7 +108,7 @@
          *
          * @return string the truncated string.
          *
-         * @throws \Exception
+         * @throws Exception
          */
         public static function truncate($string, $length, $suffix = '...', $encoding = null, $asHtml = false)
         {
@@ -127,7 +137,7 @@
          *
          * @return string the truncated string.
          *
-         * @throws \Exception
+         * @throws Exception
          */
         public static function truncateWords($string, $count, $suffix = '...', $asHtml = false)
         {
@@ -154,24 +164,24 @@
          * @return string
          * @since 2.0.1
          *
-         * @throws \Exception
+         * @throws Exception
          */
         protected static function truncateHtml($string, $count, $suffix, $encoding = false)
         {
-            $config = \HTMLPurifier_Config::create(null);
+            $config = HTMLPurifier_Config::create(null);
 
-            $lexer      = \HTMLPurifier_Lexer::create($config);
-            $tokens     = $lexer->tokenizeHTML($string, $config, new \HTMLPurifier_Context());
+            $lexer      = HTMLPurifier_Lexer::create($config);
+            $tokens     = $lexer->tokenizeHTML($string, $config, new HTMLPurifier_Context());
             $openTokens = [];
             $totalCount = 0;
             $depth      = 0;
             $truncated  = [];
             foreach ($tokens as $token) {
-                if ($token instanceof \HTMLPurifier_Token_Start) { //Tag begins
+                if ($token instanceof HTMLPurifier_Token_Start) { //Tag begins
                     $openTokens[$depth] = $token->name;
                     $truncated[]        = $token;
                     ++$depth;
-                } elseif ($token instanceof \HTMLPurifier_Token_Text && $totalCount <= $count) { //Text
+                } elseif ($token instanceof HTMLPurifier_Token_Text && $totalCount <= $count) { //Text
                     if (false === $encoding) {
                         preg_match('/^(\s*)/um', $token->data, $prefixSpace) ? : $prefixSpace = ['', ''];
                         $token->data  = $prefixSpace[1].self::truncateWords(ltrim($token->data), $count - $totalCount, '');
@@ -182,27 +192,27 @@
                     }
                     $totalCount  += $currentCount;
                     $truncated[] = $token;
-                } elseif ($token instanceof \HTMLPurifier_Token_End) { //Tag ends
+                } elseif ($token instanceof HTMLPurifier_Token_End) { //Tag ends
                     if ($token->name === $openTokens[$depth - 1]) {
                         --$depth;
                         unset($openTokens[$depth]);
                         $truncated[] = $token;
                     }
-                } elseif ($token instanceof \HTMLPurifier_Token_Empty) { //Self contained tags, i.e. <img/> etc.
+                } elseif ($token instanceof HTMLPurifier_Token_Empty) { //Self contained tags, i.e. <img/> etc.
                     $truncated[] = $token;
                 }
                 if ($totalCount >= $count) {
                     if (0 < count($openTokens)) {
                         krsort($openTokens);
                         foreach ($openTokens as $name) {
-                            $truncated[] = new \HTMLPurifier_Token_End($name);
+                            $truncated[] = new HTMLPurifier_Token_End($name);
                         }
                     }
                     break;
                 }
             }
-            $context   = new \HTMLPurifier_Context();
-            $generator = new \HTMLPurifier_Generator($config, $context);
+            $context   = new HTMLPurifier_Context();
+            $generator = new HTMLPurifier_Generator($config, $context);
 
             return $generator->generateFromTokens($truncated).($totalCount >= $count ? $suffix : '');
         }
