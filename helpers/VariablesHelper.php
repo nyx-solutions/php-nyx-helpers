@@ -1,13 +1,13 @@
 <?php
 
-    namespace nox\base\helpers;
+    namespace nyx\base\helpers;
 
-    use nox\base\helpers\exceptions\InvalidVariableTypeException;
+    use nyx\base\helpers\exceptions\InvalidVariableTypeException;
 
     /**
      * Class VariablesHelper
      *
-     * @package nox\base\helpers
+     * @package nyx\base\helpers
      */
     class VariablesHelper
     {

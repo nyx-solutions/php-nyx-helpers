@@ -1,15 +1,15 @@
-PHP NOX Helpers
+PHP NYX Helpers
 ===============
 
-NOX Helpers is a library of Helpers for PHP.
+NYX Helpers is a library of Helpers for PHP.
 
-[![Latest Stable Version](https://poser.pugx.org/nox-it/php-nox-helpers/v/stable)](https://packagist.org/packages/nox-it/php-nox-helpers)
-[![Total Downloads](https://poser.pugx.org/nox-it/php-nox-helpers/downloads)](https://packagist.org/packages/nox-it/php-nox-helpers)
-[![Latest Unstable Version](https://poser.pugx.org/nox-it/php-nox-helpers/v/unstable)](https://packagist.org/packages/nox-it/php-nox-helpers)
-[![License](https://poser.pugx.org/nox-it/php-nox-helpers/license)](https://packagist.org/packages/nox-it/php-nox-helpers)
-[![Monthly Downloads](https://poser.pugx.org/nox-it/php-nox-helpers/d/monthly)](https://packagist.org/packages/nox-it/php-nox-helpers)
-[![Daily Downloads](https://poser.pugx.org/nox-it/php-nox-helpers/d/daily)](https://packagist.org/packages/nox-it/php-nox-helpers)
-[![composer.lock](https://poser.pugx.org/nox-it/php-nox-helpers/composerlock)](https://packagist.org/packages/nox-it/php-nox-helpers)
+[![Latest Stable Version](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/v/stable)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
+[![Total Downloads](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/downloads)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
+[![Latest Unstable Version](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/v/unstable)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
+[![License](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/license)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
+[![Monthly Downloads](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/d/monthly)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
+[![Daily Downloads](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/d/daily)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
+[![composer.lock](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/composerlock)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
 
 ## Installation
 
@@ -18,17 +18,17 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist nox-it/php-nox-helpers "*"
+php composer.phar require --prefer-dist nyx-solutions/php-nyx-helpers "*"
 ```
 
 or add
 
 ```
-"nox-it/php-nox-helpers": "*"
+"nyx-solutions/php-nyx-helpers": "*"
 ```
 
 to the require section of your `composer.json` file.
 
 ## License
 
-**php-nox-helpers** is released under the BSD 3-Clause License. See the bundled `LICENSE.md` for details.
+**php-nyx-helpers** is released under the BSD 3-Clause License. See the bundled `LICENSE.md` for details.

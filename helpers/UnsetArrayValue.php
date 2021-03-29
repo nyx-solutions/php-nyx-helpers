@@ -1,6 +1,6 @@
 <?php
 
-    namespace nox\base\helpers;
+    namespace nyx\base\helpers;
 
     /**
      * Object that represents the removal of array value while performing [[ArrayHelper::merge()]].

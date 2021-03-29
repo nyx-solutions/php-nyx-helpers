@@ -1,6 +1,6 @@
 <?php
 
-    namespace nox\base\helpers;
+    namespace nyx\base\helpers;
 
     use Carbon\Carbon;
     use DateInterval;
@@ -11,7 +11,7 @@
     /**
      * Class DateTimeHelper
      *
-     * @package nox\base\helpers
+     * @package nyx\base\helpers
      */
     class DateTimeHelper extends Carbon
     {

@@ -1,11 +1,15 @@
 {
-  "name": "nox-it/php-nox-helpers",
-  "description": "NOX Helpers",
+  "name": "nyx-solutions/php-nyx-helpers",
+  "description": "NYX Helpers",
   "type": "library",
   "keywords": ["helpers", "framework", "php"],
   "license": "BSD-3-Clause",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "authors": [
+    {
+      "name": "NYX Solutions",
+      "email": "nyx@jsas.com.br"
+    },
     {
       "name": "Jonatas Sas",
       "email": "atendimento@jsas.com.br"
@@ -24,7 +28,7 @@
   },
   "autoload": {
     "psr-4": {
-      "nox\\base\\helpers\\": "helpers/"
+      "nyx\\base\\helpers\\": "helpers/"
     }
   },
   "config": {
@@ -33,7 +37,7 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/nox-it/php-nox-helpers"
+      "url": "https://github.com/nyx-solutions/php-nyx-helpers"
     }
   ]
 }

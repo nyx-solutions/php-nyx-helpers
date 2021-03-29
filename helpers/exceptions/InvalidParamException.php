@@ -1,11 +1,11 @@
 <?php
 
-    namespace nox\base\helpers\exceptions;
+    namespace nyx\base\helpers\exceptions;
 
     /**
      * Class InvalidParamException
      *
-     * @package nox\base\helpers\exceptions
+     * @package nyx\base\helpers\exceptions
      */
     class InvalidParamException extends \Exception
     {

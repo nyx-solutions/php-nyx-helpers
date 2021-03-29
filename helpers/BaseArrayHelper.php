@@ -1,15 +1,15 @@
 <?php
 
-    namespace nox\base\helpers;
+    namespace nyx\base\helpers;
 
     use Closure;
-    use nox\base\helpers\exceptions\InvalidParamException;
+    use nyx\base\helpers\exceptions\InvalidParamException;
     use Traversable;
 
     /**
      * Class BaseArrayHelper
      *
-     * @package nox\base\helpers
+     * @package nyx\base\helpers
      */
     class BaseArrayHelper
     {

@@ -1,6 +1,6 @@
 <?php
 
-    namespace nox\base\helpers;
+    namespace nyx\base\helpers;
 
     use Exception;
     use HTMLPurifier_Config;
@@ -15,7 +15,7 @@
     /**
      * Class BaseStringHelper
      *
-     * @package nox\base\helpers
+     * @package nyx\base\helpers
      */
     class BaseStringHelper
     {
