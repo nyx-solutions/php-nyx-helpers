@@ -3,24 +3,22 @@
     namespace nyx\base\helpers;
 
     /**
-     * Class ArrayHelper
-     *
-     * @package nyx\base\helpers
+     * Array Helper
      */
     class ArrayHelper extends BaseArrayHelper
     {
-        const SLUG_METHOD_SINGLE = 1;
-        const SLUG_METHOD_AS_KEY = 2;
+        protected const SLUG_METHOD_SINGLE = 1;
+        protected const SLUG_METHOD_AS_KEY = 2;
 
         /**
-         * @param array   $items
-         * @param integer $method
+         * @param array $items
+         * @param int   $method
          *
          * @return array
          */
-        public static function asSlugs($items, $method = self::SLUG_METHOD_SINGLE)
+        public static function asSlugs(array $items, int $method = self::SLUG_METHOD_SINGLE): array
         {
-            if (is_array($items) && count($items) > 0) {
+            if (!empty($items)) {
                 $slugs = [];
 
                 foreach ($items as $item) {
@@ -34,9 +32,9 @@
                 }
 
                 return $slugs;
-            } else {
-                return [];
             }
+
+            return [];
         }
 
         /**
@@ -44,9 +42,9 @@
          *
          * @return array
          */
-        public static function asAssociative($items)
+        public static function asAssociative(array $items): array
         {
-            if (is_array($items) && count($items) > 0) {
+            if (!empty($items)) {
                 $newItems = [];
 
                 foreach ($items as $item) {
@@ -54,9 +52,9 @@
                 }
 
                 return $newItems;
-            } else {
-                return [];
             }
+
+            return [];
         }
 
         /**
@@ -68,7 +66,7 @@
          *
          * @deprecated
          */
-        public static function asAssociate($items)
+        public static function asAssociate(array $items): array
         {
             return static::asAssociative($items);
         }

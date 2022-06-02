@@ -7,9 +7,7 @@
     use Traversable;
 
     /**
-     * Class BaseArrayHelper
-     *
-     * @package nyx\base\helpers
+     * Base Array Helper
      */
     class BaseArrayHelper
     {
@@ -654,9 +652,10 @@
                 throw new InvalidParamException('The length of $sortFlag parameter must be the same as that of $keys.');
             }
             $args = [];
-            foreach ($keys as $i => $key) {
+
+            foreach ($keys as $i => $itemKey) {
                 $flag   = $sortFlag[$i];
-                $args[] = static::getColumn($array, $key);
+                $args[] = static::getColumn($array, $itemKey);
                 $args[] = $direction[$i];
                 $args[] = $flag;
             }

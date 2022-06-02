@@ -6,9 +6,7 @@
     use InvalidArgumentException;
 
     /**
-     * Class BooleanHelper
-     *
-     * @package nyx\base\helpers
+     * BooleanHelper
      */
     class BooleanHelper
     {

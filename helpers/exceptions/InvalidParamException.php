@@ -2,17 +2,17 @@
 
     namespace nyx\base\helpers\exceptions;
 
+    use Exception;
+
     /**
-     * Class InvalidParamException
-     *
-     * @package nyx\base\helpers\exceptions
+     * Invalid Param Exception
      */
-    class InvalidParamException extends \Exception
+    class InvalidParamException extends Exception
     {
         /**
          * @return string the user-friendly name of this exception
          */
-        public function getName()
+        public function getName(): string
         {
             return 'Invalid Parameter';
         }

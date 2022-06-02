@@ -4,7 +4,7 @@
   "type": "library",
   "keywords": ["helpers", "framework", "php"],
   "license": "BSD-3-Clause",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "authors": [
     {
       "name": "NYX Solutions",
@@ -13,18 +13,21 @@
     {
       "name": "Jonatas Sas",
       "email": "atendimento@jsas.com.br"
+    },
+    {
+      "name": "Breno Herculano",
+      "email": "brenosouherculano@gmail.com"
     }
   ],
   "minimum-stability": "stable",
   "require": {
-    "php": ">=7.4.0",
+    "php": ">=8.1.0 <8.2",
+
     "ext-iconv": "*",
     "ext-openssl": "*",
 
-    "ezyang/htmlpurifier": "~4.12.0",
-    "nesbot/carbon": "~2.33.0"
-  },
-  "require-dev": {
+    "ezyang/htmlpurifier": "~4.14.0",
+    "nesbot/carbon": "~2.58.0"
   },
   "autoload": {
     "psr-4": {
