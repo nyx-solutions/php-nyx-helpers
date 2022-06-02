@@ -3,13 +3,13 @@ PHP NYX Helpers
 
 NYX Helpers is a library of Helpers for PHP.
 
-[![Latest Stable Version](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/v/stable)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
-[![Total Downloads](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/downloads)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
-[![Latest Unstable Version](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/v/unstable)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
-[![License](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/license)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
-[![Monthly Downloads](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/d/monthly)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
-[![Daily Downloads](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/d/daily)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
-[![composer.lock](https://poser.pugx.org/nyx-solutions/php-nyx-helpers/composerlock)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
+[![Latest Stable Version](http://poser.pugx.org/nyx-solutions/php-nyx-helpers/v)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
+[![Total Downloads](http://poser.pugx.org/nyx-solutions/php-nyx-helpers/downloads)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
+[![Latest Unstable Version](http://poser.pugx.org/nyx-solutions/php-nyx-helpers/v/unstable)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
+[![License](http://poser.pugx.org/nyx-solutions/php-nyx-helpers/license)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
+[![Monthly Downloads](http://poser.pugx.org/nyx-solutions/php-nyx-helpers/d/monthly)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
+[![Daily Downloads](http://poser.pugx.org/nyx-solutions/php-nyx-helpers/d/daily)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
+[![composer.lock](http://poser.pugx.org/nyx-solutions/php-nyx-helpers/composerlock)](https://packagist.org/packages/nyx-solutions/php-nyx-helpers)
 
 ## Installation
 
