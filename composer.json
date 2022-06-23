@@ -4,7 +4,7 @@
   "type": "library",
   "keywords": ["helpers", "framework", "php"],
   "license": "BSD-3-Clause",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "authors": [
     {
       "name": "NYX Solutions",
@@ -21,8 +21,7 @@
   ],
   "minimum-stability": "stable",
   "require": {
-    "php": ">=8.1.0 <8.2",
-
+    "php": ">=7.4.0 <8.2",
     "ext-iconv": "*",
     "ext-openssl": "*",
 
